@@ -2,179 +2,205 @@
 
 
 
-// Задание 1
+// Задание 1. Скрытие и показ текста
 function fn_task_1(){
+   const btn = document.getElementById('button'),
+         header = document.querySelector('.header__title'),
+         headerWrapper = document.querySelector('.header__wrapper'),
+         heightHeader = header.offsetHeight,
+         widthHeader = header.offsetWidth,
+         copyTextContentHeader = header.textContent,
+         copyTextContentButton = btn.textContent;
+
+   let bFlag = true;
+         // bgColor = window.getComputedStyle(headerWrapper).backgroundColor;
+
+         //console.log(heightHeader,' ',widthHeader);
+         
+   btn.addEventListener('click',(event) =>{
+      if(bFlag){
+          header.textContent = '';
+          header.style.height = heightHeader + 'px';
+          header.style.width = widthHeader + 'px';
+          btn.textContent = 'Вернуть';
+          bFlag = false;
+      }else{
+          header.textContent = copyTextContentHeader;
+          btn.textContent = copyTextContentButton;
+          bFlag = true;
+      }
+          
+   });
    
-   const people = [
-      { name: 'Глеб', age: 29 },
-      { name: 'Анна', age: 17 },
-      { name: 'Олег', age: 7 },
-      { name: 'Оксана', age: 47 }
-   ];
-   
-   // сортировка по возрасту
-   const sortAge = people.sort((a,b) => {
-      return a.age - b.age;
-   });
-
-   console.log("Сортировка по возрасту: \n");
-   sortAge.forEach((one) =>{
-      console.log(`${one.name} -> ${one.age}`);
-   });
-
-   // сортировка по именам
-   const sortName = people.sort((a,b) => {
-      if(a.name < b.name) return -1;
-      if(a.name > b.name) return 1;
-   });
-
-   console.log("Сортировка по имени: \n");
-    sortAge.forEach((one) =>{
-      console.log(`${one.name} -> ${one.age}`);
-   });
 }
 
+// Задание 2. Изменение стиля элемента
 
-
-// Задание 2
-
-//// Реализация функции filter
-function isPositive(element) {
-       if(element > 0)return true;
-       else return false;
-}
-function isMale(element) {
-   
-     if(element.gender === 'male')return true;
-     else return false;
-
-}
 
 function fn_task_2(){
 
-   function filter(arr,ruleFunction) {
-         const output = [];
-         for (let i = 0; i < arr.length; i++)
-            if(Boolean(ruleFunction(arr[i]))) output.push(arr[i]);
-            else continue;
-      
-         return output;
-   }
+   const btn = document.getElementById('button-color'),
+         header = document.querySelector('.paragraph__text'),
+         headerWrapper = document.querySelector('.paragraph__wrapper'),
+         colorText = window.getComputedStyle(header).color;
+        //   console.log(colorText);
 
-   console.log(filter([3, -4, 1, 9], isPositive)); 
+   let bFlag = true;
 
-    const people = [
-        {name: 'Глеб', gender: 'male'},
-        {name: 'Анна', gender: 'female'},
-        {name: 'Олег', gender: 'male'},
-        {name: 'Оксана', gender: 'female'}
-    ];
-    
-    console.log(filter(people, isMale));
+   btn.addEventListener('click',(event) =>{
+      if(bFlag){
+          header.style.color = 'rgba(255,255,255,0.5)';
+          bFlag = false;
+      }else{
+          header.style.color = colorText;
+          bFlag = true;
+      }
+   });
 
 }
 
+// Задание 3. Динамическое изменение текста
 
+function fn_task_3(){
+    const btn = document.getElementById('button-replacing'),
+         replacing = document.querySelector('.replacing__title'),
+         headerWrapper = document.querySelector('.replacing__wrapper'),
+         widthReplacing = replacing.offsetWidth,
+         copyTextContentReplacing = replacing.textContent,
+         copyTextContentButton = btn.textContent;
 
-// Задание 3
-function printDate() {
-         console.log(new Date());
+   let bFlag = true;
+
+   btn.addEventListener('click',(event) =>{
+      if(bFlag){
+          replacing.textContent = 'Привет, мир';
+          replacing.style.width = widthReplacing + 'px';
+          btn.textContent = 'Изменен';
+          bFlag = false;
+      }else{
+          replacing.textContent = copyTextContentReplacing;
+          btn.textContent = copyTextContentButton;
+          bFlag = true;
+      }
+   });
 }
-
-
-function fn_task_3(deadline){
-    const delay = deadline * 1000;
-    const interval = setInterval(() => {
-   // Выводим полученный параметр "deadline" в консоль
-      printDate();
-   }, 3000); // Функция будет выполняться каждую 3 секунды (3000 миллисекунд)
-
-   setTimeout(() => {
-        clearInterval(interval);
-            console.log(`Прошло ${delay}`)
-   }, delay)
-}
-
-// Задание 4
-
-function delayForSecond(callback) {
-   setTimeout(() => {
-      callback();
-   },2000);  
-}
+// Задание 4. Работа с querySelectorAll
 function fn_task_4(){
-   delayForSecond(function () { console.log('Привет, Глеб!');});
+     const btn = document.getElementById('button-description'),
+         description = document.querySelectorAll('.description'),
+         arrayDescription = new Array(),
+         arrayWidth = new Array(),
+         wrapper = document.querySelector('.element-description__wrapper'),
+         widthWrapper = wrapper.offsetWidth,
+         copyTextContentButton = btn.textContent;
+
+        //  console.log(description);
+         
+          description.forEach((element,index) =>{
+                 arrayDescription[index] = element.textContent;
+                 arrayWidth[index] = element.offsetWidth;
+          });
+
+         let bFlag = true;
+        
+
+   btn.addEventListener('click',(event) =>{
+      if(bFlag){
+          description.forEach((element,index) =>{
+                element.textContent = 'Измененный текст';
+                element.style.width = arrayWidth[index] + 'px';
+                
+          });
+          btn.textContent = 'Изменен';
+          
+          bFlag = false;
+      }else{
+          description.forEach((element,index) =>{
+                element.textContent = arrayDescription[index];
+          });
+          btn.textContent = copyTextContentButton;
+          bFlag = true;
+      }
+   });
+   
 }
 
-// Задание 5
-function sayHi (name,fullname) {
-    console.log(`Привет, ${name} ${fullname}!`);
+// Задание 5. Поиск и изменение элементов по классу в параграфах
+function fn_task_5(){
+   const btn = document.getElementById('button-replacement-class'),
+         description = document.querySelectorAll('.active'),
+         arrayDescription = new Array(),
+         wrapper = document.querySelector('.replacement-class__wrapper'),
+         copyTextContentButton = btn.textContent;
+         
+          description.forEach((element,index) =>{
+                 arrayDescription[index] = element.textContent;
+          });
+
+         let bFlag = true;
+
+   btn.addEventListener('click',(event) =>{
+      if(bFlag){
+          description.forEach((element,index) =>{
+                element.textContent = 'Измененный текст';
+          });
+          btn.textContent = 'Изменен';
+          bFlag = false;
+      }else{
+          description.forEach((element,index) =>{
+                element.textContent = arrayDescription[index];
+          });
+          btn.textContent = copyTextContentButton;
+          bFlag = true;
+      }
+   });
+         
 }
 
-function fn_task_5(cb,param_1,param_2){
-     setTimeout(() => {
-         console.log('Прошло три секунды');
-         if(cb) {  cb(param_1,param_2); }
-     }, 3000);
-}
-
-// Задание 6
-function fn_task_6(single_number){
+// Задание 6. Добавление нового элемента в DOM
+function fn_task_6(){
+      const arrayWords = ['Вторник.','Среда.','Четверг.','Пятница.','Суббота.','Воскресенье.'];
+      const btn = document.getElementById('add-new-element-button'),
+            parent = document.querySelector('.add-new-element__wrapper');
+      let count = 0;
+      btn.addEventListener('click',(event) =>{
+        const new_paragraph = document.createElement('p');
+        new_paragraph.style.fontFamily = "\\'Franklin Gothic Medium\\', \\'Arial Narrow\\', Arial, sans-serif";
+        new_paragraph.style.fontSize = Number(24) + 'px';
+        new_paragraph.style.fontWeight = Number(600);
+        new_paragraph.style.whiteSpace = 'nowrap';
+        new_paragraph.style.color = 'blue';
+        new_paragraph.textContent = arrayWords[count++];
+        
+        parent.appendChild(new_paragraph);
+        if(count >= arrayWords.length)
+        {
+             btn.disabled = "disabled";
+             btn.textContent = "Всё";
+        }
+      });
       
 }
 
-// Задание 7
-function fn_task_7(first,second){
+//Задание 7. Удаление элемента
+function fn_task_7(){
+const btn = document.getElementById('del-first-element-button'),
+            firstElement = document.querySelectorAll('.del-first-element__text')[0],
+            lastElement = firstElement.nextElementSibling,
+            parent = document.querySelector('.del-first-element__wrapper');
+            
+    
+      btn.addEventListener('click',(event) =>{
+           parent.removeChild(firstElement);
+           lastElement.classList.add('active');
+            btn.disabled = "disabled";
+             btn.textContent = "Всё";
+      });
         
 }
 
-// Задание 8
-function fn_task_8(){
-  
-     
-}
 
-// Задание 9
-function fn_task_9(){
-     
-}
-// Задание 10
-function fn_task_10(){
-        
-}
-
-
-
-// Задание 11
-function fn_task_11(){
-             
-}
-
-
-
-// Задание 12
-function fn_task_12(){
-   
-}
-
-// Задание 13
-function fn_task_13(){
-   
-     
-}
-
-// Задание 14
-function fn_task_14(){
-   
-}
-
-// Задание 15
-function fn_task_15(){
-   
-}
 
 
 export {fn_task_1, fn_task_2,fn_task_3,fn_task_4,fn_task_5,
-        fn_task_6,fn_task_7,fn_task_8,fn_task_9,fn_task_10,
-        fn_task_11,fn_task_12,fn_task_13,fn_task_14,fn_task_15,
-        sayHi};
+        fn_task_6,fn_task_7};
