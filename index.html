@@ -6,10 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset-all-style.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Callback</title>
+    <title>Основы работы DOM</title>
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <body class="body">
-    <h1 class="body__title">Callback</h1>
+    <section class="header">
+        <div class="header__wrapper">
+            <h1 class="header__title">Основы работы DOM</h1>
+        </div>
+        <div class="header__wraper-btn">
+            <button type="button" id="button" class="header__button">
+                <span>Показать</span>
+            </button>
+        </div>
+    </section>
+    <section class="paragraph">
+        <div class="paragraph__wrapper">
+            <p class="paragraph__text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita dolore tempore deleniti error cumque eos quam veritatis magni dicta iusto, quos reiciendis minus nobis repellendus! Vitae cupiditate rerum amet eius.
+            </p>
+        </div>
+        <div class="paragraph__wraper-btn">
+            <button type="button" id="button-color" class="paragraph__button">
+                <span>Изменить цвет</span>
+            </button>
+        </div>
+    </section>
+    <section class="replacing">
+        <div class="replacing__wrapper">
+            <h1 class="replacing__title">Динамическое изменение текста</h1>
+        </div>
+        <div class="replacing__wraper-btn">
+            <button type="button" id="button-replacing" class="replacing__button">
+                <span>Изменить текст</span>
+            </button>
+        </div>
+    </section>
+    <section class="element-description">
+        <div class="element-description__wrapper">
+            <div class="element-description__text">
+                <span class="description">Lorem ipsum nesciunt.</span>
+            </div>
+            <p class="element-description__text">
+                <span>A fugit mollitia.</span>
+            </p>
+            <div class="element-description__text description">
+                Facilis repudiandae eligendi. 
+            </div>
+        </div>
+        <div class="element-description__wraper-btn">
+            <button type="button" id="button-description" 
+                    class="element-description__button">
+                <span>Изменить текст</span>
+            </button>
+        </div>
+    </section>
+    <section class="replacement-class">
+        <div class="replacement-class__wrapper">
+            <p class="replacement-class__text active">
+                Lorem ipsum nesciunt.
+            </p>
+            <p class="replacement-class__text">
+                A fugit mollitia.
+            </p>
+            <p class="replacement-class__text active">
+                Facilis repudiandae eligendi. 
+            </p>
+        </div>
+        <div class="replacement-class__wraper-btn">
+            <button type="button" id="button-replacement-class" 
+                    class="replacement-class__button">
+                    <span>Изменить текст</span>
+            </button>
+        </div>
+    </section>
+    <section class="add-new-element">
+            <div class="add-new-element__wrapper">
+                <p class="add-new-element__text">
+                    Понедельник.
+                </p>
+            </div>
+        <div class="add-new-element__wraper-btn">
+            <button type="button" id="add-new-element-button" 
+                    class="add-new-element__button">
+                    <span>Добавить текст</span>
+            </button>
+        </div>
+    </section>
+    <section class="del-first-element">
+            <div class="del-first-element__wrapper">
+                <p class="del-first-element__text">
+                    Понедельник.
+                </p>
+                <p class="del-first-element__text">
+                    Фу-у-у-у-у...<br>Твой <span>понедельник</span><br>закончился!!!
+                </p>
+            </div>
+        <div class="del-first-element__wraper-btn">
+            <button type="button" id="del-first-element-button" 
+                    class="del-first-element__button">
+                    <span>Удалить первый</span>
+            </button>
+        </div>
+    </section>
 </body>
 </html>
